@@ -26,9 +26,13 @@ export const geteditParents = async (id: number) => {
         throw new Error(error.response.data.message);
     }
 }
-export const AddParent = async (addParentData: IParent) => {
+export const AddParent = async (formData: FormData) => {
     try {
-        await axiosInstance.post(`addparent`, addParentData);
+        await axiosInstance.post('addparent', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data' //Ensure correct content type for FormData
+            }
+        });
         console.log('parent add with success');
     } catch (error: any) {
         throw new Error(error.response.data.message);

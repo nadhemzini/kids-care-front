@@ -18,7 +18,7 @@ function EditParent(props: GenericModal) {
         {
             id: props.id,
             fullname: '',
-            image: '',
+            image: null,
             cin: '',
             telephone: '',
             email: '',

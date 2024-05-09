@@ -215,7 +215,7 @@ function Dashboard() {
                           <div className="card-body">
                             <div className="card-title d-flex align-items-start justify-content-between">
                               <div className="avatar flex-shrink-0">
-                                <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" className="rounded" />
+                                <img src="../assets/img/icons/unicons/chart-success.png" alt="Credit Card" className="rounded" />
                               </div>
 
                             </div>
@@ -235,7 +235,7 @@ function Dashboard() {
                                 <div className="card-title">
                                   <div className="card-title d-flex align-items-start justify-content-between">
                                     <div className="avatar flex-shrink-0">
-                                      <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" className="rounded" />
+                                      <img src="../assets/img/icons/unicons/chart-success.png" alt="Credit Card" className="rounded" />
                                     </div>
 
                                   </div>

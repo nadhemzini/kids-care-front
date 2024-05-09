@@ -6,6 +6,7 @@ import Parent from './pages/Parent'
 import Enseignants from './pages/Enseignants'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Enfant from './pages/Enfant';
+import Messages from './pages/Messages';
 import Evenement from './pages/Evenement'
 import ForgotPassword from './pages/ForgotPassword'
 import Matiere from './pages/Matiere'
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/getion-Homework" element={(userData?.role === "enseignant") ? <Homework /> : <Login />} />
           <Route path="/Unauthorized" element={<Unauthorized />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path='/gestion-messages' element={<Messages />} />
         </Routes>
       </div>
     </BrowserRouter >

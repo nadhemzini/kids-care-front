@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import Buttons from './Buttons'
 import Input from './Input'
 import Button from 'react-bootstrap/Button';
@@ -16,7 +16,7 @@ function ModalParent(props: GenericModal) {
         {
             id: 0,
             fullname: '',
-            image: '',
+            image: null,
             telephone: '',
             cin: '',
             ville: '',
@@ -28,8 +28,13 @@ function ModalParent(props: GenericModal) {
     const handlefullNameChange = ((e: React.FormEvent<HTMLFormElement>) => {
         setAddParentData({ ...AddParentData, fullname: e.currentTarget.value })
     });
-    const handleImageChange = ((e: React.FormEvent<HTMLInputElement>) => {
-        setAddParentData({ ...AddParentData, image: e.currentTarget.value })
+    const handleImageChange = ((e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (file) {
+            setAddParentData({ ...AddParentData, image: file })
+        } else {
+            toast.error('Please select an image') // Add error toast message
+        }
     });
     const handleEmailChange = ((e: React.FormEvent<HTMLFormElement>) => {
         setAddParentData({ ...AddParentData, email: e.currentTarget.value })
@@ -51,11 +56,32 @@ function ModalParent(props: GenericModal) {
     });
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('cin', AddParentData.cin);
+        formData.append('codepostal', AddParentData.codepostal);
+        formData.append('email', AddParentData.email);
+        formData.append('fullname', AddParentData.fullname);
+        formData.append('gender', AddParentData.gender);
+        formData.append('telephone', AddParentData.telephone);
+        formData.append('ville', AddParentData.ville);
+        console.log(AddParentData.image);
+        if (AddParentData.image) {
+            formData.append('image', AddParentData.image);
+        }
+
         try {
-            await AddParent(AddParentData);
-            toast.success('Parent added Successfully!')
+
+            // Convert FormData to Iparent
+
+            console.log(formData)
+            await AddParent(formData);
+            // props.addOneparent(AddParentData);
+            toast.success('parent added Successfully!');
+
+            window.location.reload();
         } catch (error) {
-            toast.error("Failed to add Parent!");
+            toast.error('Failed to add parent!' + error);
         }
     };
 

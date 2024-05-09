@@ -89,14 +89,10 @@ function Enfant() {
                                         </div>
                                         <div className='col-4'>
                                             <Button className="position-absolute top-0 end-0 mt-3 me-3" variant="primary" onClick={handleShow}>
-
                                                 <i className='bx bxs-plus-circle'></i>
                                                 Add Parent
                                             </Button>
-
-
                                         </div>
-
                                     </div>
                                     <div className="card-body ">
                                         <div className="table-responsive text-nowrap">
@@ -124,7 +120,7 @@ function Enfant() {
                                                             <td>
                                                                 <ul className="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                                                                     <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" className="avatar avatar-xs pull-up" data-bs-original-title="Lilian Fuller">
-                                                                        <img src={parent.image} alt="Avatar" className="rounded-circle" />
+                                                                        <img src={`http://localhost:8000/images/${parent.image}`} alt="Avatar" className="rounded-circle" />
                                                                     </li>
                                                                 </ul>
                                                             </td>
