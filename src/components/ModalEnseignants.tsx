@@ -135,7 +135,7 @@ function ModalEnseignants(props: GenericModal) {
 
     return (
         <>
-            <Modal show={props.show} onHide={props.handleClose}>
+            <Modal size="lg" show={props.show} onHide={props.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Enseignant</Modal.Title>
                 </Modal.Header>
@@ -168,41 +168,50 @@ function ModalEnseignants(props: GenericModal) {
                         <label className="form-label" >classes</label>
                         <div className="mb-3">
                             <div className="btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
-                                {classes.map((classItem) => (
-                                    <div key={classItem.id} className="form-check form-check-inline mb-2 me-2">
-                                        <input
-                                            type="checkbox"
-                                            className="form-check-input"
-                                            id={`checkbox1-${classItem.id}`}
-                                            value={classItem.id}
-                                            onChange={(e) => handleClassCheckboxChange(e, classItem.id)}
-                                        />
-                                        <label className="form-check-label btn btn-outline-primary" htmlFor={`checkbox1-${classItem.id}`}>
-                                            {classItem.nom_de_class}
-                                        </label>
-                                    </div>
-                                ))}
+                            <div className="row">
+    {classes.map((classItem, index) => (
+        <div key={classItem.id} className="col-md-2 mb-2">
+            <div className="form-check">
+                <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id={`checkbox1-${classItem.id}`}
+                    value={classItem.id}
+                    onChange={(e) => handleClassCheckboxChange(e, classItem.id)}
+                />
+                <label className="form-check-label btn btn-outline-primary" htmlFor={`checkbox1-${classItem.id}`}>
+                    {classItem.nom_de_class}
+                </label>
+            </div>
+        </div>
+    ))}
+</div>
+
                             </div>
                         </div>
                         <label className="form-label" >matieres</label>
                         <div className="mb-3">
-                            <div className="btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
-                                {matiere.map((matiere) => (
-                                    <div key={matiere.id} className="form-check form-check-inline mb-2 me-2">
-                                        <input
-                                            type="checkbox"
-                                            className="form-check-input"
-                                            id={`checkbox-${matiere.id}`}
-                                            value={matiere.id}
-                                            onChange={(e) => handleMatiereCheckboxChange(e, matiere.id)}
-                                        />
-                                        <label className="form-check-label btn btn-outline-primary" htmlFor={`checkbox-${matiere.id}`}>
-                                            {matiere.nommatiere}
-                                        </label>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+    <div className="btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+    <div className="row">
+    {matiere.map((matiere, index) => (
+        <div key={matiere.id} className="col-md-3 mb-2">
+            <div className="form-check">
+                <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id={`checkbox-${matiere.id}`}
+                    value={matiere.id}
+                    onChange={(e) => handleMatiereCheckboxChange(e, matiere.id)}
+                />
+                <label className="form-check-label btn btn-outline-primary" htmlFor={`checkbox-${matiere.id}`}>
+                    {matiere.nommatiere}
+                </label>
+            </div>
+        </div>
+    ))}
+</div>
+    </div>
+</div>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={props.handleClose}>
                                 Close
